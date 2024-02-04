@@ -22,28 +22,27 @@ public class Account {
     public void setAmount(double amount) {
         this.amount = amount;
     }
-    
+
     public void credit(double amount) {
-        this.amount += amount;        
+        this.amount += amount;
     }
 
     public void withdraw(double amount) throws InsufficientBalanceException {
-        if ( this.amount < amount )
+        if (this.amount < amount)
             throw new InsufficientBalanceException(owner);
         this.amount -= amount;
     }
-    
+
     /**
      * Two AccountImpl instances are considered equals
      * if they share the same owner.
      * Of course, in a more realistic implementation,
      * we should have a account number.
      */
-    public boolean equals( Object other ) {
-        if( ! (other instanceof Account) )
+    public boolean equals(Object other) {
+        if (!(other instanceof Account otherAccount))
             return false;
-        Account otherAccount = (Account) other;
-        return ( otherAccount.owner == owner);
+        return (otherAccount.owner == owner);
     }
-    
+
 }
